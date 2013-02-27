@@ -1,0 +1,22 @@
+{
+    "name": "toopay/assetic-minifier",
+    "description": "Assetic Filter for pure PHP JS and CSS minification",
+    "keywords": ["compression", "minification"],
+    "homepage": "https://github.com/toopay/assetic-minifier",
+    "type": "library",
+    "license": "New BSD",
+    "authors": [
+        {
+            "name": "Taufan Aditya"
+        }
+    ],
+    "autoload": {
+        "psr-0": {"Minifier": "src/"}
+    },
+
+    "require": {
+        "php": ">=5.3.3",
+        "kriswallsmith/assetic": "v1.0.4",
+        "phpunit/phpunit": "3.7.13",
+    }
+}

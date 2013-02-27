@@ -1,0 +1,4 @@
+/* Cliche */
+.foo { /* Inline comment? */
+	display:block; /* Not enough? */
+}
