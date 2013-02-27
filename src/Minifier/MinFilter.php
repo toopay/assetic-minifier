@@ -1,5 +1,7 @@
 <?php namespace Minifier;
 
+use Minifier\JSMin;
+use Minifier\Cssmin;
 use Assetic\Asset\AssetInterface;
 use Assetic\Filter\FilterInterface;
 
@@ -40,7 +42,7 @@ class MinFilter implements FilterInterface
     			break;
     		
     		case 'js':
-    			$content = JsMin::minify($asset->getContent());
+    			$content = JSMin::minify($asset->getContent());
     			break;
     	}
 

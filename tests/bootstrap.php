@@ -10,5 +10,5 @@ if (is_dir(realpath(__DIR__.'/../vendor'))) {
 }
 
 require realpath(__DIR__.'/../src/Minifier/Cssmin.php');
-require realpath(__DIR__.'/../src/Minifier/Jsmin.php');
+require realpath(__DIR__.'/../src/Minifier/JSMin.php');
 require realpath(__DIR__.'/../src/Minifier/MinFilter.php');
