@@ -4,29 +4,31 @@ use Minifier\MinFilter;
 use Assetic\Asset\FileAsset;
 use Assetic\Asset\AssetCollection;
 
+class MinFilterTest extends PHPUnit_Framework_TestCase
+{
+    public function testInvalidType()
+    {
+        $this->setExpectedException('InvalidArgumentException', 'Invalid asset type');
 
-class MinFilterTest extends PHPUnit_Framework_TestCase {
+        $filter = new MinFilter('lol');
+    }
 
-	public function testInvalidType() {
-		$this->setExpectedException('InvalidArgumentException', 'Invalid asset type');
+    public function testMinifyJs()
+    {
+        $assets = array(new FileAsset(TEST_PATH.'dummy.js'));
+        $filters = array(new MinFilter('js'));
+        $collection = new AssetCollection($assets, $filters);
 
-		$filter = new MinFilter('lol');
-	}
+        $this->assertEquals('function foo(){return"bar";}',$collection->dump());
+    }
 
-	public function testMinifyJs() {
-		$assets = array(new FileAsset(TEST_PATH.'dummy.js'));
-		$filters = array(new MinFilter('js'));
-		$collection = new AssetCollection($assets, $filters);
+    public function testMinifyCss()
+    {
+        $assets = array(new FileAsset(TEST_PATH.'dummy.css'));
+        $filters = array(new MinFilter('css'));
+        $collection = new AssetCollection($assets, $filters);
 
-		$this->assertEquals('function foo(){return"bar";}',$collection->dump());
-	}
-
-	public function testMinifyCss() {
-		$assets = array(new FileAsset(TEST_PATH.'dummy.css'));
-		$filters = array(new MinFilter('css'));
-		$collection = new AssetCollection($assets, $filters);
-
-		$this->assertEquals('.foo{display:block}',$collection->dump());
-	}
+        $this->assertEquals('.foo{display:block}',$collection->dump());
+    }
 
 }
