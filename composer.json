@@ -16,6 +16,6 @@
 
     "require": {
         "php": ">=5.3.3",
-        "kriswallsmith/assetic": "v1.1.0-alpha4"
+        "kriswallsmith/assetic": "~1.0"
     }
 }
