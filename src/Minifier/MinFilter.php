@@ -23,28 +23,29 @@ class MinFilter implements FilterInterface
      * Constructor
      * @param string [css|js]
      */
-    public function __construct($type = '') {
-    	if (empty($type) || !in_array($type, $this->availableType)) {
-    		throw new \InvalidArgumentException('Invalid asset type');
-    	}
+    public function __construct($type = '')
+    {
+        if (empty($type) || !in_array($type, $this->availableType)) {
+            throw new \InvalidArgumentException('Invalid asset type');
+        }
 
-    	$this->type = $type;
+        $this->type = $type;
     }
 
     public function filterLoad(AssetInterface $asset) {}
 
     public function filterDump(AssetInterface $asset)
     {
-    	switch ($this->type) {
-    		case 'css':
-    			$cssMin = new Cssmin();
-    			$content = $cssMin->run($asset->getContent());
-    			break;
-    		
-    		case 'js':
-    			$content = JSMin::minify($asset->getContent());
-    			break;
-    	}
+        switch ($this->type) {
+            case 'css':
+                $cssMin = new Cssmin();
+                $content = $cssMin->run($asset->getContent());
+                break;
+
+            case 'js':
+                $content = JSMin::minify($asset->getContent());
+                break;
+        }
 
         $asset->setContent($content);
     }
