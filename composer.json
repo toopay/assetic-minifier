@@ -10,12 +10,14 @@
             "name": "Taufan Aditya"
         }
     ],
-    "autoload": {
-        "psr-0": {"Minifier": "src/"}
-    },
-
     "require": {
         "php": ">=5.3.3",
-        "kriswallsmith/assetic": "~1.0"
+        "kriswallsmith/assetic": "~1.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~3.7"
+    },
+    "autoload": {
+        "psr-0": {"Minifier": "src/"}
     }
 }
