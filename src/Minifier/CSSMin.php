@@ -21,7 +21,7 @@
  * by Yahoo! Inc. under the BSD (revised) open source license.
  */
 
-class CSSmin
+class CSSMin
 {
     const NL = '___YUICSSMIN_PRESERVED_NL___';
     const TOKEN = '___YUICSSMIN_PRESERVED_TOKEN_';

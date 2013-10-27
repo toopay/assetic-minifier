@@ -1,11 +1,11 @@
 <?php
 
-use Minifier\Cssmin;
+use Minifier\CSSMin;
 
-class CssminTest extends PHPUnit_Framework_TestCase {
+class CSSMinTest extends PHPUnit_Framework_TestCase {
 
 	public function testMinify() {
-		$cssMin = new Cssmin();
+		$cssMin = new CSSMin();
 		$cssText = '/* Some comment that should be deleted */
 		.foo {
 		 	display:block; 

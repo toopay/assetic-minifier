@@ -1,7 +1,7 @@
 <?php namespace Minifier;
 
 use Minifier\JSMin;
-use Minifier\Cssmin;
+use Minifier\CSSMin;
 use Assetic\Asset\AssetInterface;
 use Assetic\Filter\FilterInterface;
 
@@ -37,7 +37,7 @@ class MinFilter implements FilterInterface
     {
     	switch ($this->type) {
     		case 'css':
-    			$cssMin = new Cssmin();
+    			$cssMin = new CSSMin();
     			$content = $cssMin->run($asset->getContent());
     			break;
     		
