@@ -321,11 +321,23 @@ class CSSMin
 
         // Fix for issue: #2528142
         // Replace text-shadow:0; with text-shadow:0 0 0;
-        $css = preg_replace('/(text-shadow\:0)(;|\})/ie', "strtolower('$1 0 0$2')", $css);
+        $css = preg_replace_callback(
+                   '/(text-shadow\:0)(;|\})/i',
+                   function($m) {
+                       return strtolower($m[1] . ' 0 0' . $m[2]);
+                   },
+                   $css
+               );
 
         // Replace background-position:0; with background-position:0 0;
         // same for transform-origin
-        $css = preg_replace('/(background\-position|(?:webkit|moz|o|ms|)\-?transform\-origin)\:0(;|\})/ieS', "strtolower('$1:0 0$2')", $css);
+        $css = preg_replace_callback(
+                   '/(background\-position|(?:webkit|moz|o|ms|)\-?transform\-origin)\:0(;|\})/iS',
+                   function($m) {
+                       return strtolower($m[1] . ':0 0' . $m[2]);
+                   },
+                   $css
+               );
 
         // Shorten colors from rgb(51,102,153) to #336699, rgb(100%,0%,0%) to #ff0000 (sRGB color space)
         // Shorten colors from hsl(0, 100%, 50%) to #ff0000 (sRGB color space)
@@ -337,7 +349,13 @@ class CSSMin
         $css = $this->compress_hex_colors($css);
 
         // border: none to border:0, outline: none to outline:0
-        $css = preg_replace('/(border\-?(?:top|right|bottom|left|)|outline)\:none(;|\})/ieS', "strtolower('$1:0$2')", $css);
+        $css = preg_replace_callback(
+                   '/(border\-?(?:top|right|bottom|left|)|outline)\:none(;|\})/iS',
+                   function($m) {
+                       return strtolower($m[1] . ':0' . $m[2]);
+                   },
+                   $css
+               );
 
         // shorter opacity IE filter
         $css = preg_replace('/progid\:DXImageTransform\.Microsoft\.Alpha\(Opacity\=/i', 'alpha(opacity=', $css);
