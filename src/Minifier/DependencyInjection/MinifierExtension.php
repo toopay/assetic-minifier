@@ -9,7 +9,7 @@ use Symfony\Component\DependencyInjection\Loader;
 /**
  * Class MinifierExtension
  *
- * Passes the (overwritten) configuration to the DI containe and loads the filter definitions
+ * Passes the (overwritten) configuration to the DI container and loads the filter definitions
  */
 class MinifierExtension extends Extension
 {
