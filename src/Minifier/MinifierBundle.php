@@ -3,6 +3,6 @@ namespace Minifier;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class MinfierBundle extends Bundle
+class MinifierBundle extends Bundle
 {
 } 
